@@ -3,7 +3,26 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "passThroughEnv": [
+        "*_DATABASE_URL",
+        "*_CRON_SECRET",
+        "*_SERVICE_CREDENTIAL",
+        "WEB_KEK",
+        "WEB_URL",
+        "SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "SUPABASE_ANON_KEY",
+        "WEB_TENANT_ID",
+        "WEB_APP_ORIGIN",
+        "HF_TOKEN",
+        "SCAN_SALT",
+        "ENVIRONMENT_NAME",
+        "INTAKE_ANONYMISATION_KEY",
+        "RECORDS_CONTACT_HASH_SECRET",
+        "RECORDS_TENANT_IDS",
+        "JOURNEYS_IP_HASH_SALT"
+      ]
     },
     "test": {
       "dependsOn": ["^build"]
