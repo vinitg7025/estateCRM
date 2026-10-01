@@ -127,12 +127,6 @@
       "bindings": [
         {
           "type": "service",
-          "service": "web",
-          "format": "url",
-          "env": "WEB_URL"
-        },
-        {
-          "type": "service",
           "service": "records",
           "format": "url",
           "env": "RECORDS_URL"
