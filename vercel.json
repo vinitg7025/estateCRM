@@ -9,12 +9,7 @@
       "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/web...",
       "bindings": [
 
-        {
-          "type": "service",
-          "service": "records",
-          "format": "url",
-          "env": "SVC_RECORDS_URL"
-        },
+    
         {
           "type": "service",
           "service": "journeys",
