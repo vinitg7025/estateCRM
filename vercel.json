@@ -8,6 +8,18 @@
       "installCommand": "npx -y pnpm@12.7.0 install --frozen-lockfile",
       "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/web...",
       "bindings": [
+        {
+          "type": "service",
+          "service": "intake",
+          "format": "url",
+          "env": "SVC_INTAKE_URL"
+        },
+        {
+          "type": "service",
+          "service": "records",
+          "format": "url",
+          "env": "SVC_RECORDS_URL"
+        },
 
     
         {
@@ -49,12 +61,6 @@
       "bindings": [
         {
           "type": "service",
-          "service": "web",
-          "format": "url",
-          "env": "WEB_URL"
-        },
-        {
-          "type": "service",
           "service": "records",
           "format": "url",
           "env": "RECORDS_URL"
@@ -86,12 +92,6 @@
         }
       },
       "bindings": [
-        {
-          "type": "service",
-          "service": "web",
-          "format": "url",
-          "env": "WEB_URL"
-        },
         {
           "type": "service",
           "service": "intake",
@@ -172,12 +172,6 @@
       "bindings": [
         {
           "type": "service",
-          "service": "web",
-          "format": "url",
-          "env": "WEB_URL"
-        },
-        {
-          "type": "service",
           "service": "records",
           "format": "url",
           "env": "RECORDS_URL"
@@ -215,12 +209,6 @@
         }
       },
       "bindings": [
-        {
-          "type": "service",
-          "service": "web",
-          "format": "url",
-          "env": "WEB_URL"
-        },
         {
           "type": "service",
           "service": "records",
@@ -264,12 +252,6 @@
         }
       },
       "bindings": [
-        {
-          "type": "service",
-          "service": "web",
-          "format": "url",
-          "env": "WEB_URL"
-        },
         {
           "type": "service",
           "service": "records",
