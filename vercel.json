@@ -58,14 +58,6 @@
           "maxDuration": 60
         }
       },
-      "bindings": [
-        {
-          "type": "service",
-          "service": "records",
-          "format": "url",
-          "env": "RECORDS_URL"
-        }
-      ],
       "routes": [
         {
           "src": "/svc/intake/(.*)",
@@ -208,14 +200,6 @@
           "maxDuration": 60
         }
       },
-      "bindings": [
-        {
-          "type": "service",
-          "service": "records",
-          "format": "url",
-          "env": "RECORDS_URL"
-        }
-      ],
       "routes": [
         {
           "src": "/svc/listings/(.*)",
@@ -251,14 +235,6 @@
           "maxDuration": 60
         }
       },
-      "bindings": [
-        {
-          "type": "service",
-          "service": "records",
-          "format": "url",
-          "env": "RECORDS_URL"
-        }
-      ],
       "routes": [
         {
           "src": "/svc/insight/(.*)",
