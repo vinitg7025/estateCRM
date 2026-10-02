@@ -16,4 +16,6 @@ export interface AppDeps {
   integrations: Integrations;
   /** Per-call budget of jobs (default 50 s; tests use less). */
   jobBudgetMs?: number;
+  /** Tenants the scheduled jobs visit (default: every tenant). Tests scope them so parallel test files don't collide. */
+  jobTenants?: () => Promise<string[]>;
 }

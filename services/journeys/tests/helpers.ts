@@ -176,6 +176,7 @@ export function harness(opts: { clock?: TestClock; content?: FakeContent; storag
   const storage = opts.storage ?? new MemoryStorage();
   const intake = opts.intake ?? new FakeIntake();
   const integrations = fakeIntegrations(content, storage, intake);
+  const tenantId: string = randomUUID();
   const auth = authenticate({ service: SERVICE, jwks, cronSecret: env.CRON_SECRET });
   const svc = buildApp({
     config,
@@ -185,9 +186,11 @@ export function harness(opts: { clock?: TestClock; content?: FakeContent; storag
     clock,
     integrations,
     jobBudgetMs: 20_000,
+    // The scheduler endpoint runs jobs for this harness's tenant only: test files share one database, and a job run
+    // for every tenant (on another file's clock) would change their counters and emitted_at marks.
+    jobTenants: async () => [tenantId],
   });
   const runner = createTxRunner(handle.db, clock.now);
-  const tenantId: string = randomUUID();
 
   const tx = <T>(fn: (tx: Tx) => Promise<T>, tenant = tenantId) => runner.run(tenant, { correlationId: 'test' }, fn);
 
