@@ -20,8 +20,6 @@
           "format": "url",
           "env": "SVC_RECORDS_URL"
         },
-
-    
         {
           "type": "service",
           "service": "journeys",
@@ -50,11 +48,11 @@
     },
     "intake": {
       "root": "services/intake",
-      "entrypoint": "index.ts",
+      "entrypoint": "vercel.mjs",
       "installCommand": "npx -y pnpm@12.7.0 install --frozen-lockfile",
-      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/intake...",
+      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/intake^... && npx -y pnpm@12.7.0 --filter @11e/intake run bundle:vercel",
       "functions": {
-        "index.ts": {
+        "vercel.mjs": {
           "maxDuration": 60
         }
       },
@@ -75,11 +73,11 @@
     },
     "records": {
       "root": "services/records",
-      "entrypoint": "index.ts",
+      "entrypoint": "vercel.mjs",
       "installCommand": "npx -y pnpm@12.7.0 install --frozen-lockfile",
-      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/records...",
+      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/records^... && npx -y pnpm@12.7.0 --filter @11e/records run bundle:vercel",
       "functions": {
-        "index.ts": {
+        "vercel.mjs": {
           "maxDuration": 60
         }
       },
@@ -108,11 +106,11 @@
     },
     "journeys": {
       "root": "services/journeys",
-      "entrypoint": "index.ts",
+      "entrypoint": "vercel.mjs",
       "installCommand": "npx -y pnpm@12.7.0 install --frozen-lockfile",
-      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/journeys...",
+      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/journeys^... && npx -y pnpm@12.7.0 --filter @11e/journeys run bundle:vercel",
       "functions": {
-        "index.ts": {
+        "vercel.mjs": {
           "maxDuration": 60
         }
       },
@@ -153,11 +151,11 @@
     },
     "crm-engine": {
       "root": "services/crm-engine",
-      "entrypoint": "index.ts",
+      "entrypoint": "vercel.mjs",
       "installCommand": "npx -y pnpm@12.7.0 install --frozen-lockfile",
-      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/crm-engine...",
+      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/crm-engine^... && npx -y pnpm@12.7.0 --filter @11e/crm-engine run bundle:vercel",
       "functions": {
-        "index.ts": {
+        "vercel.mjs": {
           "maxDuration": 60
         }
       },
@@ -192,14 +190,22 @@
     },
     "listings": {
       "root": "services/listings",
-      "entrypoint": "index.ts",
+      "entrypoint": "vercel.mjs",
       "installCommand": "npx -y pnpm@12.7.0 install --frozen-lockfile",
-      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/listings...",
+      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/listings^... && npx -y pnpm@12.7.0 --filter @11e/listings run bundle:vercel",
       "functions": {
-        "index.ts": {
+        "vercel.mjs": {
           "maxDuration": 60
         }
       },
+      "bindings": [
+        {
+          "type": "service",
+          "service": "records",
+          "format": "url",
+          "env": "RECORDS_URL"
+        }
+      ],
       "routes": [
         {
           "src": "/svc/listings/(.*)",
@@ -227,14 +233,22 @@
     },
     "insight": {
       "root": "services/insight",
-      "entrypoint": "index.ts",
+      "entrypoint": "vercel.mjs",
       "installCommand": "npx -y pnpm@12.7.0 install --frozen-lockfile",
-      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/insight...",
+      "buildCommand": "npx -y pnpm@12.7.0 turbo run build --filter=@11e/insight^... && npx -y pnpm@12.7.0 --filter @11e/insight run bundle:vercel",
       "functions": {
-        "index.ts": {
+        "vercel.mjs": {
           "maxDuration": 60
         }
       },
+      "bindings": [
+        {
+          "type": "service",
+          "service": "records",
+          "format": "url",
+          "env": "RECORDS_URL"
+        }
+      ],
       "routes": [
         {
           "src": "/svc/insight/(.*)",

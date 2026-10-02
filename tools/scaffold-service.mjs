@@ -70,6 +70,7 @@ for (const svc of services) {
           dev: 'tsx watch --env-file-if-exists=../../.env.local src/server.ts',
           start: 'node --env-file-if-exists=../../.env.local dist/src/server.js',
           build: 'tsc -p tsconfig.build.json',
+          'bundle:vercel': 'node ../../tools/bundle-service.mjs',
           test: 'vitest run',
           typecheck: 'tsc -p tsconfig.json',
           lint: 'eslint . --no-error-on-unmatched-pattern',
@@ -358,7 +359,7 @@ export function compose(env: NodeJS.ProcessEnv = process.env) {
   put(
     svc,
     'src/server.ts',
-    `// Local server (\`pnpm dev\`). Vercel uses index.ts instead.
+    `// Local server (\`pnpm dev\`). Vercel uses vercel.mjs (the bundled index.ts) instead.
 import { serve } from '@hono/node-server';
 import { compose } from './main.js';
 
@@ -375,10 +376,20 @@ process.on('SIGTERM', stop);
   put(
     svc,
     'index.ts',
-    `// Vercel entry (Services, Hono preset): the composed app is the default export. Local dev uses src/server.ts.
+    `// Bundle entry for Vercel (tools/bundle-service.mjs → dist/vercel/app.mjs, re-exported by vercel.mjs): the composed app is
+// the default export. Local dev uses src/server.ts.
 import { compose } from './src/main.js';
 
 export default compose().app;
+`,
+  );
+
+  put(
+    svc,
+    'vercel.mjs',
+    `// Vercel entry (Services, Hono preset). index.ts is bundled into one ES module by \`pnpm bundle:vercel\`
+// (tools/bundle-service.mjs): Vercel's function bundle has no package.json, so plain .js would load as CommonJS.
+export { default } from './dist/vercel/app.mjs';
 `,
   );
 

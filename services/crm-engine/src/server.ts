@@ -1,4 +1,4 @@
-// Local server (`pnpm dev`). Vercel uses index.ts instead.
+// Local server (`pnpm dev`). Vercel uses vercel.mjs (the bundled index.ts) instead.
 import { serve } from '@hono/node-server';
 import { compose } from './main.js';
 
