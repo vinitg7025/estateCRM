@@ -11,6 +11,7 @@
     "dev": "tsx watch --env-file-if-exists=../../.env.local src/server.ts",
     "start": "node --env-file-if-exists=../../.env.local dist/src/server.js",
     "build": "tsc -p tsconfig.build.json",
+    "bundle:vercel": "node ../../tools/bundle-service.mjs",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
     "lint": "eslint . --no-error-on-unmatched-pattern",
