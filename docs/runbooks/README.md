@@ -3,6 +3,7 @@
 | Runbook | When |
 |---|---|
 | [provisioning.md](provisioning.md) | Creating an environment (pilot now; staging/production after the paid gate) |
+| [environment-variables.md](environment-variables.md) | Setting or checking any environment variable or secret (what, where it comes from, commands) |
 | [deploy.md](deploy.md) | Shipping a service |
 | [rollback.md](rollback.md) | A deploy made things worse |
 | [rotate-secrets.md](rotate-secrets.md) | Every 90 days, and on any suspected leak |
