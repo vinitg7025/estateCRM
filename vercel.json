@@ -309,6 +309,12 @@
       }
     },
     {
+      "source": "/svc/records/(v1/(?:micromarkets|vocabulary))",
+      "destination": {
+        "service": "records"
+      }
+    },
+    {
       "source": "/(.*)",
       "destination": {
         "service": "web"
