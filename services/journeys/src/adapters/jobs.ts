@@ -6,7 +6,8 @@ import type { AppDeps } from '../deps.js';
 import { createTxRunner } from './store.js';
 
 export function jobs(deps: AppDeps): Record<string, () => Promise<JobResult>> {
-  const runner = createTxRunner(deps.db, () => deps.clock.now());
+  const base = createTxRunner(deps.db, () => deps.clock.now());
+  const runner = deps.jobTenants ? { ...base, tenants: deps.jobTenants } : base;
   const all = allJobs({
     runner,
     clock: deps.clock,

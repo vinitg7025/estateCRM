@@ -41,6 +41,7 @@ export type { IdempotencyIdentity } from './request-helpers.js';
 export { CircuitBreaker, CircuitOpenError, DownstreamError, createHttpClient } from './client.js';
 export type { BreakerOptions, ClientOptions, ClientResponse, HttpClient, RequestOptions } from './client.js';
 export { registerPlatformEndpoints } from './platform.js';
+export { stripPathPrefixes } from './prefix.js';
 export type {
   JobLeasesTable,
   JobResult,
