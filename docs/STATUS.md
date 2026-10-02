@@ -14,7 +14,8 @@ State: IN PROGRESS (service tracks in parallel; local-first, cloud provisioning 
 Inputs: docs/inputs/extractor-master-profile.md (PII-free profile of crm_master.xlsx; file not stored), docs/inputs/CRM-01-brd-v0.5.pdf, docs/inputs/CRM-01-brd-v0.6.pdf (client BRDs by Vinit), docs/inputs/vinit-journeys-artifact.md
 
 Environments:
-- Supabase pilot project ref: `xzizchbnejzxkhemmpie` (Mumbai, Free). Linking, bootstrap and deploy happen in the provisioning session (docs/runbooks/provisioning.md).
+- Supabase pilot project: `estatesCRM`, ref `tkbaakabwolgjnpdvwjs` (`https://tkbaakabwolgjnpdvwjs.supabase.co`, ap-south-1 Mumbai, Postgres 17), created 2026-09-30. It replaces the first pilot project `xzizchbnejzxkhemmpie`, which is no longer used. Linking, bootstrap and deploy happen in the provisioning session (docs/runbooks/provisioning.md).
+- Vercel: one project `estatecrm` (Vercel Services, CR-013) in team "Vinit G's projects"; production domain `estatecrm-navy.vercel.app`.
 
 Stage 7 task progress:
 - [x] F-01 Monorepo scaffold (2026-09-27)
